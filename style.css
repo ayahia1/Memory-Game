@@ -1,0 +1,66 @@
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 2em;
+  background-color: slategrey;
+  color: white;
+}
+
+h1 {
+  font-family: verdana, arial, sans-serif;
+}
+
+button {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#Btn-container > button {
+  width: 200px;
+  height: 200px;
+  margin: 2px;
+}
+
+.hidden {
+  display: none;
+}
+
+
+#btn-1 {
+  background-color: lightgreen;
+}
+
+#btn-1:active, #btn-1.lit {
+  
+ background-color: green;
+  
+}
+
+#btn-2 {
+  background-color: lightblue;
+}
+
+#btn-2:active, #btn-2.lit {
+  
+ background-color: blue;
+  
+}
+
+#btn-3 {
+  background-color: pink;
+}
+
+#btn-3:active, #btn-3.lit {
+  
+ background-color: red;
+  
+}
+
+#btn-4 {
+  background-color: lightyellow;
+}
+
+#btn-4:active, #btn-4.lit {
+  
+ background-color: yellow;
+  
+}
