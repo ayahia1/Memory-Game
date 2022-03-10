@@ -64,3 +64,16 @@ button {
  background-color: yellow;
   
 }
+
+#btn-5 {
+  background-color: coral;
+}
+
+#btn-5:active, #btn-5.lit{
+  background-color: brown;
+}
+
+#mistakes-cnt {
+  color: white;
+  font-size: 250%;
+}
