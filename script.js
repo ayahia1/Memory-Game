@@ -1,4 +1,4 @@
-let pattern = [2, 2, 4, 3, 2, 1, 2, 4]; 
+let pattern = [2, 2, 4, 3, 5, 1, 2, 4]; 
 //storing the pattern of button presses
 let progress = 0; 
 //indicate how far the player went in guessig the pattern
@@ -11,16 +11,50 @@ let tonePlaying = false;
 let volume = 0.5;
 let guessCounter = 0;
 
-const clueHoldTime = 1000; //how long to hold each clue light/sound
+let guessMistakes = 0; //keep track of the number of user mistakes 
+const max_guess_Mistakes = 3; //max number of allowed mistakes
+
+let clueHoldTime = 1000; //how long to hold each clue light/sound
 const cluePauseTime = 333; //how long to pause between clues
 const nextClueWaitTime = 1000; //how long to wait before playing a sequence
 
+let clueHoldDec = 0; //how much to decrement the clueHoldTime after each turn (speed the game)
+                    //initialize to zero (assigned value in startGame function)
+
+function generatePattern(patternLength){
+  //function that generates random patter array of length patternLength
+  //the generated pattern contains number from 1 to 5 (since we got 5 buttons)
+  
+  let newPattern = [];
+  for (let i = 0; i < patternLength; i++){
+    let newNum = Math.floor(Math.random() * 5) + 1;
+    newPattern.push(newNum);
+  }
+  return newPattern;
+}
 
 let startGame = () =>{
   //initialize game variables
   progress = 0;
   gamePlaying = true;
-  pattern = 
+  clueHoldTime = 1000;
+  guessMistakes = 0;
+  
+  pattern = generatePattern(10);
+  console.log(pattern);
+  
+  clueHoldDec = Math.floor(Math.floor(9 / 10 * clueHoldTime) / pattern.length); 
+  //decrement each time by this value, the final hold time should be close to 1/10 of 
+  //the start curHoldTime value
+  
+  
+  let heartsAllowed = "";
+  for (let i = 0; i < max_guess_Mistakes - guessMistakes; i += 1){
+    heartsAllowed += `&hearts; `;
+  }
+  document.getElementById(`mistakes-cnt`).innerHTML = heartsAllowed;
+  
+  
   //swap start and stop buttons
   document.getElementById('startBtn').classList.add('hidden');
   document.getElementById('stopBtn').classList.remove('hidden');
@@ -41,7 +75,8 @@ const freqMap = {
   1: 261.6,
   2: 329.6,
   3: 392,
-  4: 466.2
+  4: 466.2,
+  5: 500
 }
 
 function playTone(btn,len){ 
@@ -104,7 +139,7 @@ function playClueSequence(){
   context.resume()
   let delay = nextClueWaitTime; //set delay to initial wait time
   for(let i=0;i <= progress;i++){ // for each clue that is revealed so far
-    console.log("play single clue: " + pattern[i] + " in " + delay + "ms")
+   // console.log("play single clue: " + pattern[i] + " in " + delay + "ms")
     setTimeout(playSingleClue,delay,pattern[i]) // set a timeout to play that clue
     delay += clueHoldTime 
     delay += cluePauseTime;
@@ -123,7 +158,7 @@ function winGame(){
 
 function guess(btn){
   
-  console.log("user guessed: " + btn);
+  //console.log("user guessed: " + btn);
   
   if(!gamePlaying){
     //we are not playing right now ignore
@@ -131,8 +166,19 @@ function guess(btn){
   }
   
   if (btn != pattern[guessCounter]){
-    // if the click was on a wrong button, lose the game
-    loseGame();
+    // if the click was on a wrong button
+    guessMistakes += 1;
+    if (guessMistakes > max_guess_Mistakes){
+      loseGame();
+    }
+    else {
+        alert(`Wrong Guess, Take another shot for the last one!`);
+        let heartsAllowed = "";
+        for (let i = 0; i < max_guess_Mistakes - guessMistakes; i += 1){
+            heartsAllowed += `&hearts; `;
+        }
+        document.getElementById(`mistakes-cnt`).innerHTML = heartsAllowed;
+    }
     return;
   }
   
@@ -146,6 +192,8 @@ function guess(btn){
     else{
       // if not the last turn, move to the next one
       progress += 1;
+      clueHoldTime -= clueHoldDec;
+      console.log(clueHoldTime)
       playClueSequence();
     }
   }
