@@ -1,2 +1,4 @@
 # Memory-Game
-(To be done later)
+The Light and Sound memory game implemented with additional features 
+<br>
+(More description to be added soon)

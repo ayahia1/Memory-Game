@@ -20,20 +20,52 @@
     
     <p1> Welcome to the game! Repeat back the pattern by pressing buttons. </p1>
 
+    <br> <br>
+    
+    <div id = "info-container">
+      <span id = "mistakes-cnt"> &hearts; &hearts; &hearts; </span> 
+      <span id = "score-info"> Current Score: <b id = "score-val"> 0 </b> / 5 </span>
+    </div>
+    
     <br> 
     
-    <p> <span id = "mistakes-cnt"> &hearts; &hearts; &hearts; </span> </p>
     <button id = "startBtn" onclick = "startGame()"> Start </button>
     <button id = "stopBtn" class = "hidden" onclick = "stopGame()">  Stop </button>
     
     <div id = "Btn-container">
       
-      <button id = "btn-1" onclick = "guess(1)" onmousedown = "startTone(1)" onmouseup = "stopTone()"> </button>
-      <button id = "btn-2" onclick = "guess(2)" onmousedown = "startTone(2)" onmouseup = "stopTone()"> </button>
-      <button id = "btn-3" onclick = "guess(3)" onmousedown = "startTone(3)" onmouseup = "stopTone()"> </button>
-      <button id = "btn-4" onclick = "guess(4)" onmousedown = "startTone(4)" onmouseup = "stopTone()"> </button>
-      <button id = "btn-5" onclick = "guess(5)" onmousedown = "startTone(5)" onmouseup = "stopTone()"> </button>
+      <button id = "btn-1" onclick = "guess(1)" onmousedown = "startTone(1)" onmouseup = "stopTone()"> 
+        <img src = "https://cdn.glitch.global/76560269-bec1-49b1-87e5-5c4c8b7a6825/pic6.jpg?v=1646971074446" height ="100%" width="100%"/>
+      </button>
       
+      <button id = "btn-2" onclick = "guess(2)" onmousedown = "startTone(2)" onmouseup = "stopTone()"> 
+        <img src = "https://cdn.glitch.global/76560269-bec1-49b1-87e5-5c4c8b7a6825/pic5.jpg?v=1646970526750" height ="100%" width="100%"/>
+      </button>
+      
+      <button id = "btn-3" onclick = "guess(3)" onmousedown = "startTone(3)" onmouseup = "stopTone()"> 
+        <img src = "https://cdn.glitch.global/76560269-bec1-49b1-87e5-5c4c8b7a6825/pic4.jpg?v=1646970642554" height ="100%" width="100%"/>
+      </button>
+      
+      <button id = "btn-4" onclick = "guess(4)" onmousedown = "startTone(4)" onmouseup = "stopTone()"> 
+        <img src = "https://cdn.glitch.global/76560269-bec1-49b1-87e5-5c4c8b7a6825/pic3.jpg?v=1646971227408" height ="100%" width="100%"/>
+      </button>
+      
+      <button id = "btn-5" onclick = "guess(5)" onmousedown = "startTone(5)" onmouseup = "stopTone()"> 
+        <img src = "https://cdn.glitch.global/76560269-bec1-49b1-87e5-5c4c8b7a6825/pic2.jpg?v=1646970231397" height ="100%" width="100%"/>
+      </button>
+      
+      <button id = "btn-6" onclick = "guess(6)" onmousedown = "startTone(6)" onmouseup = "stopTone(6)"> 
+        <img src = "https://cdn.glitch.global/76560269-bec1-49b1-87e5-5c4c8b7a6825/pic1.jpg?v=1646970056664" height ="100%" width="100%"/>
+      </button>
+      
+    </div>
+    <!-- Difficulty button & Game length button -->
+    <br>
+    <div class="slidecontainer">
+        <br>
+        Difficulty: <strong id = "diff-output" style="color:lightgreen"> 6 </strong>
+      <br> <br>
+      <input type = "range" min = "1" max = "10" value = "6" id = "myRange">
     </div>
     
     <script src="/script.js" defer> </script>
