@@ -21,13 +21,23 @@ const nextClueWaitTime = 1000; //how long to wait before playing a sequence
 let clueHoldDec = 0; //how much to decrement the clueHoldTime after each turn (speed the game)
                     //initialize to zero (assigned value in startGame function)
 
+//sliders functions & variables for game difficulty
+let slider = document.getElementById("myRange");
+slider.oninput = () => {
+  document.getElementById("diff-output").innerHTML = slider.value;
+};
+let gameDifficulty = 6;
+
+
+//length of the pattern (Game length)
+
 function generatePattern(patternLength){
   //function that generates random patter array of length patternLength
   //the generated pattern contains number from 1 to 5 (since we got 5 buttons)
   
   let newPattern = [];
   for (let i = 0; i < patternLength; i++){
-    let newNum = Math.floor(Math.random() * 5) + 1;
+    let newNum = Math.floor(Math.random() * 6) + 1;
     newPattern.push(newNum);
   }
   return newPattern;
@@ -40,20 +50,23 @@ let startGame = () =>{
   clueHoldTime = 1000;
   guessMistakes = 0;
   
-  pattern = generatePattern(10);
-  console.log(pattern);
+  pattern = generatePattern(5); //generate the patter
   
-  clueHoldDec = Math.floor(Math.floor(9 / 10 * clueHoldTime) / pattern.length); 
-  //decrement each time by this value, the final hold time should be close to 1/10 of 
-  //the start curHoldTime value
+  
+  gameDifficulty = slider.value - 1; //set the game difficulty to the slider's value - 1
+  
+  clueHoldDec = Math.floor(Math.floor(gameDifficulty / 10 * clueHoldTime) / pattern.length); 
+  //decrement each time by this value, the final hold time should be close to (10 - gameDifficulty)/10 of 
+  //the start curHoldTime value = 1000
   
   
   let heartsAllowed = "";
   for (let i = 0; i < max_guess_Mistakes - guessMistakes; i += 1){
     heartsAllowed += `&hearts; `;
   }
+  /* resetting the score and the allowed attempts */
   document.getElementById(`mistakes-cnt`).innerHTML = heartsAllowed;
-  
+  document.getElementById(`score-val`).innerHTML = progress;
   
   //swap start and stop buttons
   document.getElementById('startBtn').classList.add('hidden');
@@ -76,7 +89,8 @@ const freqMap = {
   2: 329.6,
   3: 392,
   4: 466.2,
-  5: 500
+  5: 500, 
+  6: 261.6
 }
 
 function playTone(btn,len){ 
@@ -153,7 +167,7 @@ function loseGame(){
 
 function winGame(){
   stopGame();
-  alert("Congratulations. You won!")
+  setTimeout(() => alert("Congratulations. You won!"), 500);
 }
 
 function guess(btn){
@@ -184,16 +198,17 @@ function guess(btn){
   
   //if the click was correct
   if (guessCounter == progress){
+    progress += 1;
+    document.getElementById(`score-val`).innerHTML = progress;
     //if this is the last click in this turn
-    if (progress == pattern.length - 1){
+    if (progress == pattern.length){
       // if last turn, you win the game
       winGame();
     }
     else{
       // if not the last turn, move to the next one
-      progress += 1;
       clueHoldTime -= clueHoldDec;
-      console.log(clueHoldTime)
+      //console.log(clueHoldTime)
       playClueSequence();
     }
   }
@@ -202,3 +217,4 @@ function guess(btn){
     guessCounter += 1;
   }
 }
+

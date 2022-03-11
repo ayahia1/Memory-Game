@@ -21,8 +21,18 @@ button {
 }
 
 .hidden {
+  /*
+  To be used for the stop and start buttons -> remove it from the page strucutre 
+  */
   display: none;
 }
+
+
+img{
+  /*Make all images invisible -> hidden but still in the page structure*/
+  visibility: hidden;
+}
+
 
 
 #btn-1 {
@@ -73,7 +83,44 @@ button {
   background-color: brown;
 }
 
+/*
+Color is already good no need to change
+#btn-6{
+  background-color: grey;
+}
+*/
+
+#btn-6:active, #btn-6.lit{
+  background-color: grey;
+}
+
+button:active > img, button.lit > img{
+  visibility: visible;
+}
+
 #mistakes-cnt {
   color: white;
   font-size: 250%;
 }
+
+#score-info{
+  position: absolute;
+  right: 10px;
+  top: 15px;
+}
+
+#info-container {
+  position: relative;
+  width: 80%;
+}
+
+#score-val{
+  color: lightgreen;
+}
+
+#myRange {
+  
+  /* need to change slider color */
+  
+}
+
