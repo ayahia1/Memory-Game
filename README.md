@@ -36,3 +36,8 @@ The following **additional** features are implemented:
 
 - [x] Hearts added to the top to indicate the remaining false attempts.
 - [x] Player can change the game difficulty from 1 to 10, which increase/decrease the acceleration of the playback. 
+
+## Video Walkthrough (GIF)
+
+If you recorded multiple GIFs for all the implemented features, you can add them here:
+![x] (https://github.com/ayahia1/Memory-Game/blob/main/App_Walkthrough.gif)
