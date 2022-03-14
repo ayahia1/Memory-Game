@@ -27,7 +27,9 @@ slider.oninput = () => {
   document.getElementById("diff-output").innerHTML = slider.value;
 };
 let gameDifficulty = 6;
+let timerID = 0;
 
+let Timer_max = 10;
 
 //length of the pattern (Game length)
 
@@ -60,23 +62,48 @@ let startGame = () =>{
   //the start curHoldTime value = 1000
   
   
-  let heartsAllowed = "";
-  for (let i = 0; i < max_guess_Mistakes - guessMistakes; i += 1){
-    heartsAllowed += `&hearts; `;
-  }
-  /* resetting the score and the allowed attempts */
-  document.getElementById(`mistakes-cnt`).innerHTML = heartsAllowed;
+  /* resetting the score */
   document.getElementById(`score-val`).innerHTML = progress;
   
   //swap start and stop buttons
   document.getElementById('startBtn').classList.add('hidden');
   document.getElementById('stopBtn').classList.remove('hidden');
+  
+  //start count-down timer
+  startCounter(Timer_max);
   playClueSequence();
 };
 
 
+function startCounter(time){
+  document.getElementById('time-val').innerHTML = time;
+  let remTime = time - 1;
+  
+    timerID = setInterval(() => {
+    if (remTime <= 0){
+      clearTimer();
+      guess(-1);
+    }
+    else {
+      document.getElementById('time-val').innerHTML = remTime;
+    }
+    remTime -= 1;
+  }, 1000);
+}
+
+function clearTimer(){
+  clearInterval(timerID);
+  timerID = 0;
+  document.getElementById('time-val').innerHTML = Timer_max;
+}
+
 let stopGame = () => {
   gamePlaying = false;
+  stopTone();
+  
+  if (timerID) {
+    clearTimer();
+  }
   
   //swap start and stop buttons again
   document.getElementById('stopBtn').classList.add('hidden');
@@ -163,6 +190,7 @@ function playClueSequence(){
 function loseGame(){
   stopGame();
   alert("Game Over. You lost!");
+  setHearts(max_guess_Mistakes);
 }
 
 function winGame(){
@@ -182,16 +210,22 @@ function guess(btn){
   if (btn != pattern[guessCounter]){
     // if the click was on a wrong button
     guessMistakes += 1;
-    if (guessMistakes > max_guess_Mistakes){
+    if (guessMistakes == max_guess_Mistakes){
       loseGame();
     }
     else {
-        alert(`Wrong Guess, Take another shot for the last one!`);
-        let heartsAllowed = "";
-        for (let i = 0; i < max_guess_Mistakes - guessMistakes; i += 1){
-            heartsAllowed += `&hearts; `;
+        if (btn == -1){
+          // if we here becuse time is up, then make this alert and start new timer
+          alert(`Time up, Think faster`)
+          startCounter(Timer_max);
         }
-        document.getElementById(`mistakes-cnt`).innerHTML = heartsAllowed;
+        else {
+          alert(`Wrong Guess, Take another shot for the last one!`);
+          stopTone();
+        }
+      
+        // decrement the number of hearts by one
+        setHearts(max_guess_Mistakes - guessMistakes);
     }
     return;
   }
@@ -210,6 +244,10 @@ function guess(btn){
       clueHoldTime -= clueHoldDec;
       //console.log(clueHoldTime)
       playClueSequence();
+      
+      //get rid of the previous timer and start a new one
+      clearTimer();
+      startCounter(Timer_max);
     }
   }
   else {
@@ -218,3 +256,10 @@ function guess(btn){
   }
 }
 
+function setHearts(cnt){
+  let heartsAllowed = "";
+  for (let i = 0; i < cnt; i += 1){
+      heartsAllowed += `&hearts; `;
+  }
+  document.getElementById(`mistakes-cnt`).innerHTML = heartsAllowed;
+}

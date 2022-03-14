@@ -16,15 +16,19 @@
   </head>
   
   <body>
-    <h1> Light and Sound Memory Game </h1>
+    <header>
+      <h1> Light and Sound Memory Game </h1>
+    </header>
     
     <p1> Welcome to the game! Repeat back the pattern by pressing buttons. </p1>
+     <br> <br> <p1 class = "note"> Hearts indicte the number of <b> remaining attempts </b> </p1>
 
     <br> <br>
     
     <div id = "info-container">
-      <span id = "mistakes-cnt"> &hearts; &hearts; &hearts; </span> 
+      <span id = "mistakes-cnt">  &hearts; &hearts; &hearts; </span> 
       <span id = "score-info"> Current Score: <b id = "score-val"> 0 </b> / 5 </span>
+      <span id = "time-info">  Time Remaining: <b id = "time-val"> 20 </b> </span>
     </div>
     
     <br> 
@@ -59,6 +63,7 @@
       </button>
       
     </div>
+    
     <!-- Difficulty button & Game length button -->
     <br>
     <div class="slidecontainer">

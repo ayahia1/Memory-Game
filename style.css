@@ -109,18 +109,30 @@ button:active > img, button.lit > img{
   top: 15px;
 }
 
+#time-info{
+  position: absolute;
+  right: 10px;
+  top: 50px;
+}
+
 #info-container {
   position: relative;
   width: 80%;
 }
 
-#score-val{
-  color: lightgreen;
-}
 
 #myRange {
   
   /* need to change slider color */
-  
+}
+
+b {
+  color: lightgreen;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
