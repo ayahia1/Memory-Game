@@ -35,4 +35,4 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Hearts added to the top to indicate the remaining false attempts.
-- [x] Player can change the game difficulty from 1 to 10. 
+- [x] Player can change the game difficulty from 1 to 10, which increase/decrease the acceleration of the playback. 
