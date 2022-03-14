@@ -38,6 +38,5 @@ The following **additional** features are implemented:
 - [x] Player can change the game difficulty from 1 to 10, which increase/decrease the acceleration of the playback. 
 
 ## Video Walkthrough (GIF)
-
-If you recorded multiple GIFs for all the implemented features, you can add them here:
-![] (https://github.com/ayahia1/Memory-Game/blob/main/App_Walkthrough.gif)
+<br> 
+<img src= "https://github.com/ayahia1/Memory-Game/blob/main/App_Walkthrough.gif" width = 100% height = 450> <br>
