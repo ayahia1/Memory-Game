@@ -40,4 +40,4 @@ The following **additional** features are implemented:
 ## Video Walkthrough (GIF)
 
 If you recorded multiple GIFs for all the implemented features, you can add them here:
-![x] (https://github.com/ayahia1/Memory-Game/blob/main/App_Walkthrough.gif)
+![] (https://github.com/ayahia1/Memory-Game/blob/main/App_Walkthrough.gif)
