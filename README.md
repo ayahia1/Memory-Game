@@ -6,7 +6,9 @@ Submitted by: **Abdelrahman Abdelmonsef**
 
 Time spent: **8** hours spent in total
 
+
 Link to project: https://glitch.com/edit/#!/sl-memory-game
+
 
 ## Required Functionality
 
@@ -40,6 +42,7 @@ The following **additional** features are implemented:
 ## Video Walkthrough (GIF)
 <br> 
 <img src= "https://github.com/ayahia1/Memory-Game/blob/main/App_Walkthrough.gif" width = 100% height = 450> <br>
+
 
 
 ## Reflection Questions
@@ -87,3 +90,4 @@ The following **additional** features are implemented:
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
