@@ -73,7 +73,7 @@ The following **additional** features are implemented:
 
 ## Interview Recording URL Link
 
- [My 5-minute Interview Recording] (https://swarthmore.zoom.us/rec/share/BNiEmbN5ANPp4e0bA9WLnvQuG2_QDX6ZD-OwRMfzO2cV6V1iX9qHTcwVfay3Tf60.pL6cU9sEO89iwpqm?startTime=1648414666000 (Passcode: If^.29%$))
+ [My 5-minute Interview Recording] (https://swarthmore.zoom.us/rec/share/gPHm0yvmXro0-fXPJoDbiAQ-PpSxohigiUFoU2bUda5oCkVo7uAH3lZaRz2QMFRJ.TIc8jD94qY6QHEWh?startTime=1648414666000%20(Passcode:%20If^.29%$))
 
 ## License
 
