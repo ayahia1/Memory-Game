@@ -69,12 +69,6 @@ The following **additional** features are implemented:
 - Currently, users have to play with only these six buttons. If I had time, I would have let the users choose how many buttons to have in the game using a slider that ranges from 2 to 10. 
 - Finally, I would have changed the styles for some of the elements in the game. I think the game background needs to be a lighter color so that I can style the game buttons to be more vivid and noticeable. For example, I would be able to make the hearts, which indicates the remaining attempts, red instead of white. Furthermore, I would have styled the start and stop buttons differently from each other to make them more distinguishable and, more importantly, indicative of their function. 
 
-
-
-## Interview Recording URL Link
-
- [My 5-minute Interview Recording] (https://swarthmore.zoom.us/rec/share/CrPTD4NeyKPTckkBj3wYFtyVhEfEzob1oyEhLuAayLYySblGYSBqK6kGMa6GcBUX.ko3xdiQk5XTrvtLS?startTime=1648414666000)
-
 ## License
 
     Copyright Abdelrahman Abdelmonsef
