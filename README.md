@@ -4,9 +4,6 @@
 
 Submitted by: **Abdelrahman Abdelmonsef**
 
-Time spent: **8** hours spent in total
-
-
 Link to project: https://glitch.com/edit/#!/sl-memory-game
 
 
